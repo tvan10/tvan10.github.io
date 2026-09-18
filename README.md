@@ -1,13 +1,15 @@
 # Roadtrip shared challenge site
 
 This is the separate GitHub Pages repository for Roadtrip share links. Its intended
-public URL is `https://tvan10.github.io`. The iOS app generates links at
-`https://tvan10.github.io/trip/v1/?trip=<base64url-encoded-JSON>`.
+base URL is `https://tvan10.github.io/routeguesser/`. The iOS app generates links at
+`https://tvan10.github.io/routeguesser/trip/v1/?trip=<base64url-encoded-JSON>`.
 
 The trip page is a static, working fallback when the app is absent. It reads the
 preset and endpoints from the link in the browser. The site stores no trips.
 The `.nojekyll` file keeps `.well-known/apple-app-site-association` available
-at the domain root for Apple's Universal Links association.
+at the domain root for Apple's Universal Links association. Apple looks for this
+file at `https://tvan10.github.io/.well-known/apple-app-site-association`, even
+though the shared challenge paths are under `/routeguesser/`.
 
 ## Publish on GitHub
 
@@ -17,12 +19,12 @@ at the domain root for Apple's Universal Links association.
 2. Open **Settings → Pages**. Under **Build and deployment**,
    select **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
    Wait for the Pages deployment to finish. Ensure the site is publicly
-   accessible at `https://tvan10.github.io/`.
+   accessible at `https://tvan10.github.io/routeguesser/`.
 3. Check these URLs directly, without following redirects:
 
    ```sh
    curl -i https://tvan10.github.io/.well-known/apple-app-site-association
-   curl -i 'https://tvan10.github.io/trip/v1/?trip=eyJwcmVzZXQiOiJjbGFzc2ljUm9hZHRyaXAiLCJzdGFydCI6eyJuYW1lIjoiQm9zdG9uIiwic3RhdGVDb2RlIjoiTUEiLCJsYXRpdHVkZSI6NDIuMzYsImxvbmdpdHVkZSI6LTcxLjA2fSwiZGVzdGluYXRpb24iOnsibmFtZSI6Ik5hc2h2aWxsZSIsInN0YXRlQ29kZSI6IlROIiwibGF0aXR1ZGUiOjM2LjE2LCJsb25naXR1ZGUiOi04Ni43OH19'
+   curl -i 'https://tvan10.github.io/routeguesser/trip/v1/?trip=eyJwcmVzZXQiOiJjbGFzc2ljUm9hZHRyaXAiLCJzdGFydCI6eyJuYW1lIjoiQm9zdG9uIiwic3RhdGVDb2RlIjoiTUEiLCJsYXRpdHVkZSI6NDIuMzYsImxvbmdpdHVkZSI6LTcxLjA2fSwiZGVzdGluYXRpb24iOnsibmFtZSI6Ik5hc2h2aWxsZSIsInN0YXRlQ29kZSI6IlROIiwibGF0aXR1ZGUiOjM2LjE2LCJsb25naXR1ZGUiOi04Ni43OH19'
    ```
 
    Both should return HTTP 200. The first must return the JSON AASA file with

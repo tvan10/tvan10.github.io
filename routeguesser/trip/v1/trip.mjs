@@ -15,7 +15,7 @@ function cityIsValid(city) {
 
 export function decodeTrip(url) {
   const parsed = new URL(url);
-  if (parsed.pathname !== "/trip/v1/" || parsed.hash || [...parsed.searchParams.keys()].length !== 1) return null;
+  if (parsed.pathname !== "/routeguesser/trip/v1/" || parsed.hash || [...parsed.searchParams.keys()].length !== 1) return null;
   const token = parsed.searchParams.get("trip");
   if (!token || token.length > 2048 || !/^[A-Za-z0-9_-]+$/.test(token)) return null;
   try {
