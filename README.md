@@ -11,23 +11,14 @@ at the domain root for Apple's Universal Links association.
 
 ## Publish on GitHub
 
-1. Sign into the `tvan10` GitHub account. Create a **public** repository named
-   exactly `tvan10.github.io`. Do not initialize it with a README or license;
-   this local repository already has its files and history.
-2. From this directory, run:
-
-   ```sh
-   git remote add origin https://github.com/tvan10/tvan10.github.io.git
-   git push -u origin main
-   ```
-
-   GitHub may ask you to authenticate. The local `gh` token currently reports
-   invalid; `gh auth login -h github.com` refreshes it if you prefer the CLI.
-3. Open the new repository's **Settings → Pages**. Under **Build and deployment**,
+1. Open [the GitHub repository](https://github.com/tvan10/tvan10.github.io).
+   It has already been created and pushed as **private**. In **Settings → General**,
+   scroll to **Danger Zone → Change repository visibility** and make it **public**.
+2. Open **Settings → Pages**. Under **Build and deployment**,
    select **Deploy from a branch**, branch **main**, folder **/(root)**, then Save.
    Wait for the Pages deployment to finish. Ensure the site is publicly
    accessible at `https://tvan10.github.io/`.
-4. Check these URLs directly, without following redirects:
+3. Check these URLs directly, without following redirects:
 
    ```sh
    curl -i https://tvan10.github.io/.well-known/apple-app-site-association
@@ -36,7 +27,7 @@ at the domain root for Apple's Universal Links association.
 
    Both should return HTTP 200. The first must return the JSON AASA file with
    no redirect; the second should show the challenge page in a browser.
-5. Install the iOS app with the matching `applinks:tvan10.github.io` entitlement
+4. Install the iOS app with the matching `applinks:tvan10.github.io` entitlement
    on a device. Send a share link through Messages or Notes and tap it. Check
    that it starts the shared trip. Repeat on a device without the app to verify
    the web fallback. Apple's associated-domains CDN can take time to refresh;
