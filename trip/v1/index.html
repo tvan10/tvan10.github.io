@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Roadtrip challenge</title>
+  <style>
+    body { font: 18px/1.5 system-ui, sans-serif; max-width: 42rem; margin: 10vh auto; padding: 1.5rem; color: #172624; background: #f8f5ed; }
+    .card { background: white; border: 1px solid #d9e2dc; border-radius: 20px; padding: 1.5rem; box-shadow: 0 12px 35px #19392b12; }
+    .eyebrow { color: #086956; font-size: .8rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    h1 { line-height: 1.15; }
+    .route { font-size: 1.3rem; font-weight: 650; }
+    .muted { color: #4d5e58; }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <p class="eyebrow">Roadtrip challenge</p>
+    <h1 id="title">Checking your trip…</h1>
+    <p id="route" class="route"></p>
+    <p id="preset"></p>
+    <p id="instructions" class="muted"></p>
+  </main>
+  <script type="module">
+    import { decodeTrip } from "./trip.mjs";
+    const trip = decodeTrip(location.href);
+    const title = document.getElementById("title");
+    const instructions = document.getElementById("instructions");
+    if (trip) {
+      title.textContent = "Your next drive is waiting.";
+      document.getElementById("route").textContent = `${trip.start} → ${trip.destination}`;
+      document.getElementById("preset").textContent = trip.preset;
+      instructions.textContent = "Open this link from Messages or Notes on an iPhone with Roadtrip installed to start this challenge. If you still need the app, keep this link and tap it again after installing.";
+    } else {
+      title.textContent = "This trip link is invalid.";
+      instructions.textContent = "Ask the sender for a new Roadtrip challenge link.";
+    }
+  </script>
+</body>
+</html>

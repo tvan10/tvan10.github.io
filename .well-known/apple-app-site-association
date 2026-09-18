@@ -1,0 +1,12 @@
+{
+  "applinks": {
+    "details": [
+      {
+        "appIDs": ["DVBR8TC5UD.com.tvan.RoadtripGame"],
+        "components": [
+          { "/": "/trip/v1/" }
+        ]
+      }
+    ]
+  }
+}
